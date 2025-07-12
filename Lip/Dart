@@ -1,0 +1,38 @@
+import 'package:flutter/material.dart';
+import 'package:flame/game.dart';
+import 'game.dart'; // 
+import 'vehicle_selector.dart'; 
+
+void main() {
+  runApp(const VehicleSelectionScreen());
+}
+
+class VehicleSelectionScreen extends StatefulWidget {
+  const VehicleSelectionScreen({Key? key}) : super(key: key);
+
+  @override
+  State<VehicleSelectionScreen> createState() => _VehicleSelectionScreenState();
+}
+
+class _VehicleSelectionScreenState extends State<VehicleSelectionScreen> {
+  bool _gameStarted = false;
+  late HillClimbGame _game;
+
+  void _startGame(String vehicleType) {
+    _game = HillClimbGame(selectedVehicle: vehicleType);
+    setState(() {
+      _gameStarted = true;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Hill Climb Game',
+      home: _gameStarted
+          ? GameWidget(game: _game)
+          : VehicleSelector(onSelect: _startGame),
+    );
+  }
+}
