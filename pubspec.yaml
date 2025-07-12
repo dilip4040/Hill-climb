@@ -1,0 +1,18 @@
+
+name: hill_climb_flutter_game
+description: A simple Hill Climb style bike/car game using Flutter and Flame.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flame: ^1.10.0
+
+flutter:
+  assets:
+    - assets/images/
+
+    - assets/sounds/
